@@ -6,6 +6,19 @@ from rich.console import Console
 console = Console()
 MAIN_COLOR="#FFD700"
 
+def show_ascii():
+    art = """
+     ██      ██ ██              ████████ ██                        ██                     ██   ██      ██         ██     
+    ░██     ░██░░              ██░░░░░░ ░██                       ░██                    ░██  ░██     ░██        ░██     
+    ░██     ░██ ██ ██████████ ░██       ░██       ██████  ██████ ██████  █████  ██   ██ ██████░██     ░██ ██   ██░██     
+    ░░██    ██ ░██░░██░░██░░██░█████████░██████  ██░░░░██░░██░░█░░░██░  ██░░░██░██  ░██░░░██░ ░██████████░██  ░██░██████ 
+     ░░██  ██  ░██ ░██ ░██ ░██░░░░░░░░██░██░░░██░██   ░██ ░██ ░   ░██  ░██  ░░ ░██  ░██  ░██  ░██░░░░░░██░██  ░██░██░░░██
+      ░░████   ░██ ░██ ░██ ░██       ░██░██  ░██░██   ░██ ░██     ░██  ░██   ██░██  ░██  ░██  ░██     ░██░██  ░██░██  ░██
+       ░░██    ░██ ███ ░██ ░██ ████████ ░██  ░██░░██████ ░███     ░░██ ░░█████ ░░██████  ░░██ ░██     ░██░░██████░██████ 
+        ░░     ░░ ░░░  ░░  ░░ ░░░░░░░░  ░░   ░░  ░░░░░░  ░░░       ░░   ░░░░░   ░░░░░░    ░░  ░░      ░░  ░░░░░░ ░░░░░   
+    """
+    console.print(art, style=f"bold italic {MAIN_COLOR}")
+
 def cursor_movement_list():
     movement_list = """
 h - move left
@@ -146,7 +159,7 @@ def show_menu():
     ]
 
     for key, desc in menu_options:
-        console.print(f"{{  {key} }} -- {desc}", style=f"bold italic {MAIN_COLOR}")
+        console.print(f"[[ {key} ]] -- {desc}", style=f"bold italic {MAIN_COLOR}")
 
 def main():
     cursor = cursor_movement_list()
@@ -183,8 +196,9 @@ def main():
                 if target == key:
                     os.system('clear')
                     console.print(value, style=f"bold italic {MAIN_COLOR}")
-                    time.sleep(5)
+                    time.sleep(3)
 
 if __name__ == "__main__":
+    show_ascii()
     main()
     
