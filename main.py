@@ -1,4 +1,7 @@
+import os
+import time
 from rich.console import Console
+
 
 console = Console()
 MAIN_COLOR="#FFD700"
@@ -129,6 +132,22 @@ def multiple_work_list():
     """ 
     return mltpl_wrk_list
 
+def show_menu():
+    menu_options = [
+        ('1', 'Cursor movement'),
+        ('2', 'Insert Mode - Inserting/Appending text'),
+        ('3', 'Editing'),
+        ('4', 'Marking text'),
+        ('5', 'Visual commands'),
+        ('6', 'Cut and Paste'),
+        ('7', 'Exiting'),
+        ('8', 'Search/Replace'),
+        ('9', 'Working with multiple files')
+    ]
+
+    for key, desc in menu_options:
+        console.print(f"{{  {key} }} -- {desc}", style=f"bold italic {MAIN_COLOR}")
+
 def main():
     cursor = cursor_movement_list()
     cut_paste = cut_paste_list()
@@ -148,16 +167,9 @@ def main():
     '7': exiting,
     '8': search_replace,
     '9': multiple}
-    console.print("{1} -- Cursor movement", style=f"bold italic {MAIN_COLOR}")
-    console.print("{2} -- Insert Mode - Inserting/Appending text", style=f"bold italic {MAIN_COLOR}")
-    console.print("{3} -- Editing", style=f"bold italic {MAIN_COLOR}")
-    console.print("{4} -- Marking text", style=f"bold italic {MAIN_COLOR}")
-    console.print("{5} -- Visual commands", style=f"bold italic {MAIN_COLOR}")
-    console.print("{6} -- Cut and Paste", style=f"bold italic {MAIN_COLOR}")
-    console.print("{7} -- Exiting", style=f"bold italic {MAIN_COLOR}")
-    console.print("{8} -- Search/Replace", style=f"bold italic {MAIN_COLOR}")
-    console.print("{9} -- Working with multiple files", style=f"bold italic {MAIN_COLOR}")
+    
     while True:
+        show_menu()
         console.print("Choose the desired topic or 'q' to quit: ", style=f"italic {MAIN_COLOR}")
         target = input().strip()
         if target.lower() == 'q':
@@ -166,9 +178,12 @@ def main():
         if int(target) not in range(1, 10):
             console.print("There is no such option", style="bold italic red")
             continue
+        
         for key, value in choice_dict.items():
                 if target == key:
+                    os.system('clear')
                     console.print(value, style=f"bold italic {MAIN_COLOR}")
+                    time.sleep(5)
 
 if __name__ == "__main__":
     main()
